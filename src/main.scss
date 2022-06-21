@@ -1,0 +1,38 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;600&display=swap');
+
+$main-color: (
+    dark: var(--dark),
+    darker-green: var(--darken-green),
+    dark-green: var(--dark-green),
+    green: var(--green),
+    light-green: var(--light-green)
+);
+
+:root{
+    --dark: #212224;
+    --darker-green: #1D2E28;
+    --dark-green: #14452F;
+    --green: #0A5C36;
+    --light-green: #066839;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html{
+    font-family: Tahoma;
+}
+
+body{
+    background-color: map-get($main-color, dark);
+    width: 100%;
+    height: 100vh;
+    max-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
