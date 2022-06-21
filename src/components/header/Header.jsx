@@ -8,21 +8,19 @@ const InputField = styled.input`
     padding: 1rem 0 1rem 1rem;
     font-size: 1rem;
     outline: none;
-    background-color: var(--dark-green);
-    color: white;
+    background-color: #FFF;
+    color: var(--darker-green);
     border: 0;
-    ::placeholder{
-        color: #CCC;
-    }
     `
 const AddButton = styled.button`
     flex: 1;
     padding: .5rem 0;
-    background-color: var(--dark-green);
+    background-color: #FFF;
     font-size: 1.5rem;
     border: 0;
+    border-left: .1rem solid var(--green);
     &:hover{
-        color: #FFF;
+        color: var(--green);
         cursor: pointer;
     }
     &::after{

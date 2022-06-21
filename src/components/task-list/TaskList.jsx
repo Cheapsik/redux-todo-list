@@ -1,15 +1,25 @@
 import React from "react";
-import Task from './task/Task'
+import Task from './task/Task';
+import './task-list.scss';
 
 const TaskList = () => {
 
 
     return (
-        <>
-            <tr>
+        <div className="tasklist-wrapper">
                 <Task />
-            </tr>
-        </>
+                <Task />
+                <Task />
+                <Task />
+                <Task />
+                <Task />
+                <Task />
+                <Task />
+                <Task />
+         
+                <Task />
+                <Task />
+        </div>
     )
 }
 

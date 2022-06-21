@@ -1,38 +1,36 @@
 import React, { useReducer, useEffect } from "react";
 import styled from "styled-components";
 
-
 const Message = styled.h2`
-    padding: 1.5rem;
-    margin-bottom: 2rem;
-    text-align: center;
+  padding: 1.5rem;
+  margin: 1rem 0;
+  text-align: center;
 `;
 const messagesList = [
-    'Hello! 🎉',
-    'What\'s up today? 😊',
-    'Let me remember it. 💪',
-    'What news, sir? 😎',
+  "Hello! 🎉",
+  "What's up today? 😊",
+  "Let me remember it. 💪",
+  "What news, sir? 😎",
 ];
 
 const reducer = () => {
-    const randomItem = messagesList[Math.floor(Math.random() * messagesList.length)];
-    return randomItem;
+  const randomItem =
+    messagesList[Math.floor(Math.random() * messagesList.length)];
+  return randomItem;
 };
 
-
 const RandomMessage = () => {
+  const [randomMessage, dispatch] = useReducer(reducer);
 
-    const [randomMessage, dispatch] = useReducer(reducer);
+  useEffect(() => {
+    dispatch();
+  }, []);
 
-    useEffect(() => {
-        dispatch();
-    }, [])
-
-    return (
-        <>
-            <Message>{randomMessage}</Message>
-        </>
-    )
-}
+  return (
+    <>
+      <Message>{randomMessage}</Message>
+    </>
+  );
+};
 
 export default RandomMessage;
