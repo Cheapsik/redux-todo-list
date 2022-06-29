@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import { connect } from "react-redux/es/exports";
+import { removeTodo } from "../../../redux/actions/TodoActions";
 import './task.scss';
 
 const TaskContainer = styled.div`
@@ -14,16 +16,20 @@ const TaskContainer = styled.div`
     }
 `
 
-const Task = () => {
+const Task = ({ todo, dispatch }) => {
+
+    const handleRemoveTodo = () => {
+        dispatch(removeTodo({ id: todo.todoId }))
+    }
 
     return (
         <TaskContainer>
-            <p className="task-name">Siemano</p>
+            <p className="task-name">{todo.todoName}</p>
             <div className="action-controllers">
-                <button>🗑️</button>
+                <button onClick={handleRemoveTodo}>🗑️</button>
             </div>
         </TaskContainer>
     )
 }
 
-export default Task;
+export default connect()(Task);

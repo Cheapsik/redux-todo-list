@@ -1,26 +1,27 @@
 import React from "react";
+import { connect } from "react-redux/es/exports";
 import Task from './task/Task';
 import './task-list.scss';
 
-const TaskList = () => {
-
-
+const TaskList = ({ todosList }) => {
     return (
         <div className="tasklist-wrapper">
-                <Task />
-                <Task />
-                <Task />
-                <Task />
-                <Task />
-                <Task />
-                <Task />
-                <Task />
-                <Task />
-         
-                <Task />
-                <Task />
+            <ul>
+                {
+                    todosList ?
+                        todosList.map((todo) => <li key={todo.todoId}><Task todo={todo} /></li>) :
+                        null
+                }
+            </ul>
         </div>
     )
 }
 
-export default TaskList;
+const mapStateToProps = (state) => {
+    return ({
+        todosList: state.todoReducer
+    })
+
+}
+
+export default connect(mapStateToProps)(TaskList);

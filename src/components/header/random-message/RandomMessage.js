@@ -5,6 +5,7 @@ const Message = styled.h2`
   padding: 1.5rem;
   margin: 1rem 0;
   text-align: center;
+  font-size: clamp(1rem, 2.5vw, 2rem); 
 `;
 const messagesList = [
   "Hello! 🎉",

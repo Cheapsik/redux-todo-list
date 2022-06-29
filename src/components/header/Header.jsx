@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useRef } from "react";
+import { connect } from "react-redux/es/exports";
+import { addTodo } from "../../redux/actions/TodoActions";
 import RandomMessage from "./random-message/RandomMessage";
 import styled from "styled-components";
 import "./header.scss";
@@ -27,16 +29,35 @@ const AddButton = styled.button`
         content: '+';
     }
 `
-const Header = () => {
+const Header = ({ dispatch }) => {
+    const inputField = useRef(null);
+
+    const handleSubmitForm = (e) => {
+        e.preventDefault()
+        if (!inputField.current.value.trim()) {
+            return
+        }
+        mappedTask()
+        dispatch(addTodo(mappedTask()));
+        inputField.current.value = '';
+    }
+
+    const mappedTask = () => ({
+        value: inputField.current.value,
+        id: `${inputField.value}_${Math.random()}`
+    })
+
     return (
         <>
             <RandomMessage />
             <div className="action-add_wrapper">
-                <InputField type="text" placeholder="Enter a task..." data-input="add-task-input" />
-                <AddButton />
+                <form onSubmit={handleSubmitForm}>
+                    <InputField type="text" ref={inputField} placeholder="Enter a task..." data-input="add-task-input" />
+                    <AddButton type="submit" />
+                </form>
             </div>
         </>
     )
 }
 
-export default Header;
+export default connect()(Header);
