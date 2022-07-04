@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { connect } from "react-redux/es/exports";
-import { removeTodo } from "../../../redux/actions/TodoActions";
+import { removeTodo, setCompleteTodo } from "../../../redux/actions/TodoActions";
+import { VisibilityFiltersEnum } from '../../../constants/VisibilityFiltersEnum';
 import './task.scss';
 
 const TaskContainer = styled.div`
@@ -22,10 +23,20 @@ const Task = ({ todo, dispatch }) => {
         dispatch(removeTodo({ id: todo.todoId }))
     }
 
+    const handleSetComplete = () => {
+        dispatch(setCompleteTodo({ id: todo.todoId, status: VisibilityFiltersEnum.Complete }))
+    }
+
     return (
         <TaskContainer>
-            <p className="task-name">{todo.todoName}</p>
+            <p className="task-name" style={{
+                textDecoration: todo.todoStatus === VisibilityFiltersEnum.Complete && 'line-through'
+            }}>{todo.todoName}</p>
             <div className="action-controllers">
+                {todo.todoStatus === VisibilityFiltersEnum.Uncomplete ?
+                    <button onClick={handleSetComplete}>✔️</button> :
+                    null
+                }
                 <button onClick={handleRemoveTodo}>🗑️</button>
             </div>
         </TaskContainer>

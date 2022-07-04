@@ -1,12 +1,13 @@
 import Header from "./components/header/Header";
+import Footer from "./components/footer/Footer";
 import TaskList from "./components/task-list/TaskList";
 import styled from "styled-components";
 import "./main.scss";
 
 const ContentWrapper = styled.div`
   position: relative;
-  width: 30vw;
-  max-height: 60vh;
+  width: 40vw;
+  max-height: 35rem;
   background-color: var(--darker-green);
   box-shadow: 0.5rem 0.5rem 1rem rgba(0, 0, 0, 1);
   border: 0.1rem solid #000;
@@ -46,6 +47,7 @@ const TodoList = () => {
     <ContentWrapper>
       <Header />
       <TaskList />
+      <Footer />
     </ContentWrapper>
   );
 };

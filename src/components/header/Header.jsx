@@ -2,6 +2,7 @@ import React, { useRef } from "react";
 import { connect } from "react-redux/es/exports";
 import { addTodo } from "../../redux/actions/TodoActions";
 import RandomMessage from "./random-message/RandomMessage";
+import { VisibilityFiltersEnum } from "../../constants/VisibilityFiltersEnum";
 import styled from "styled-components";
 import "./header.scss";
 
@@ -37,14 +38,14 @@ const Header = ({ dispatch }) => {
         if (!inputField.current.value.trim()) {
             return
         }
-        mappedTask()
         dispatch(addTodo(mappedTask()));
         inputField.current.value = '';
     }
 
     const mappedTask = () => ({
         value: inputField.current.value,
-        id: `${inputField.value}_${Math.random()}`
+        id: `${inputField.value}_${Math.random()}`,
+        status: VisibilityFiltersEnum.Uncomplete
     })
 
     return (
