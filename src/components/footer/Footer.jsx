@@ -1,3 +1,4 @@
+import { React } from 'react';
 import {useSelector, useDispatch} from 'react-redux'
 import { changeTodoListView } from "../../redux/actions/TodoActions";
 import { VisibilityFiltersEnum } from '../../constants/VisibilityFiltersEnum';
@@ -19,15 +20,15 @@ const Footer = () => {
         return filterValues.map((filter, index) => {
             const filteredTodos = todos.map((todo) => todo.todoStatus === filter ? todo : null).filter((f) => f);
             return (
-                <>
-                    <button className={filter === visibility ? 'active' : null} key={index + 'asdgasdg'} onClick={() => handleChangeDisplayTodos(filter)}>{filter}
+                <div key={filter}>
+                    <button className={filter === visibility ? 'active' : null} key={index} onClick={() => handleChangeDisplayTodos(filter)}>{filter}
                         {
                             filter === VisibilityFiltersEnum.All ?
                                 <span>{todos.length}</span> :
                                 <span>{filteredTodos.length}</span>
                         }
                     </button>
-                </>
+                </div>
             )
 
         }

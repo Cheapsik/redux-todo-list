@@ -18,9 +18,10 @@ const ContentWrapper = styled.div`
     content: "";
     display: block;
     position: absolute;
-    left: -1rem;
+    left: -1.3rem;
+    top: .3rem;
     width: 1rem;
-    height: 100.5%;
+    height: 101%;
     background-color: #333;
     transform: skewY(-45deg);
     border-top-right-radius: 0.6rem;
@@ -30,8 +31,8 @@ const ContentWrapper = styled.div`
     content: "";
     display: block;
     position: absolute;
-    bottom: -1rem;
-    left: -1.5%;
+    bottom: -1.3rem;
+    left: -.7rem;
     width: 101%;
     height: 1rem;
     background-color: #222;

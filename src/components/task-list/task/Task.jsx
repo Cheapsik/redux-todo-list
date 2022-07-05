@@ -2,6 +2,7 @@ import { useDispatch } from "react-redux/es/exports";
 import styled from "styled-components";
 import { removeTodo, setCompleteTodo } from "../../../redux/actions/TodoActions";
 import { VisibilityFiltersEnum } from '../../../constants/VisibilityFiltersEnum';
+import PropTypes from 'prop-types'
 import './task.scss';
 
 const TaskContainer = styled.div`
@@ -17,9 +18,10 @@ const TaskContainer = styled.div`
     }
 `
 
-const Task = ({ todo }) => {
+const Task = (props) => {
+    const todo  = props.todo;
     const dispatch = useDispatch();
-
+    
     const handleRemoveTodo = () => {
         dispatch(removeTodo({ id: todo.todoId }))
     }
@@ -43,5 +45,9 @@ const Task = ({ todo }) => {
         </TaskContainer>
     )
 }
+
+Task.propTypes = {
+    todo: PropTypes.object
+  };
 
 export default Task;

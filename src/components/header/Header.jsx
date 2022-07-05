@@ -9,7 +9,7 @@ import "./header.scss";
 const InputField = styled.input`
     flex: 9;
     padding: 1rem 0 1rem 1rem;
-    font-size: 1rem;
+    font-size: 1.2rem;
     outline: none;
     background-color: #FFF;
     color: var(--darker-green);
@@ -25,9 +25,6 @@ const AddButton = styled.button`
     &:hover{
         color: var(--green);
         cursor: pointer;
-    }
-    &::after{
-        content: '+';
     }
 `
 const Header = () => {
@@ -55,7 +52,7 @@ const Header = () => {
             <div className="action-add_wrapper">
                 <form onSubmit={handleSubmitForm}>
                     <InputField type="text" ref={inputField} placeholder="Enter a task..." data-input="add-task-input" />
-                    <AddButton type="submit" />
+                    <AddButton type="submit"><span>+</span></AddButton>
                 </form>
             </div>
         </>
