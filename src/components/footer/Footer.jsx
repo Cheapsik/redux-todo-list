@@ -1,10 +1,13 @@
-import "./footer.scss";
-import { connect } from "react-redux/es/exports";
+import {useSelector, useDispatch} from 'react-redux'
 import { changeTodoListView } from "../../redux/actions/TodoActions";
 import { VisibilityFiltersEnum } from '../../constants/VisibilityFiltersEnum';
+import "./footer.scss";
 
 
-const Footer = ({ dispatch, visibility, todos }) => {
+const Footer = () => {
+    const dispatch = useDispatch();
+    const visibility = useSelector((state) => state.visibilityReducer)
+    const todos = useSelector((state) => state.todoReducer)
 
     const handleChangeDisplayTodos = (type) => {
         dispatch(changeTodoListView({ value: type }))
@@ -38,11 +41,4 @@ const Footer = ({ dispatch, visibility, todos }) => {
     )
 }
 
-const mapStateToProps = (state) => {
-    return ({
-        visibility: state.visibilityReducer,
-        todos: state.todoReducer
-    })
-}
-
-export default connect(mapStateToProps)(Footer);
+export default Footer;

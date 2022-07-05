@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import { connect } from "react-redux/es/exports";
+import { useDispatch } from 'react-redux'
 import { addTodo } from "../../redux/actions/TodoActions";
 import RandomMessage from "./random-message/RandomMessage";
 import { VisibilityFiltersEnum } from "../../constants/VisibilityFiltersEnum";
@@ -30,7 +30,8 @@ const AddButton = styled.button`
         content: '+';
     }
 `
-const Header = ({ dispatch }) => {
+const Header = () => {
+    const dispatch = useDispatch();
     const inputField = useRef(null);
 
     const handleSubmitForm = (e) => {
@@ -61,4 +62,4 @@ const Header = ({ dispatch }) => {
     )
 }
 
-export default connect()(Header);
+export default Header;

@@ -1,5 +1,5 @@
+import { useDispatch } from "react-redux/es/exports";
 import styled from "styled-components";
-import { connect } from "react-redux/es/exports";
 import { removeTodo, setCompleteTodo } from "../../../redux/actions/TodoActions";
 import { VisibilityFiltersEnum } from '../../../constants/VisibilityFiltersEnum';
 import './task.scss';
@@ -17,7 +17,8 @@ const TaskContainer = styled.div`
     }
 `
 
-const Task = ({ todo, dispatch }) => {
+const Task = ({ todo }) => {
+    const dispatch = useDispatch();
 
     const handleRemoveTodo = () => {
         dispatch(removeTodo({ id: todo.todoId }))
@@ -43,4 +44,4 @@ const Task = ({ todo, dispatch }) => {
     )
 }
 
-export default connect()(Task);
+export default Task;

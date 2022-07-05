@@ -1,10 +1,12 @@
 import React from "react";
-import { connect } from "react-redux/es/exports";
+import { useSelector } from "react-redux";
 import Task from './task/Task';
 import { VisibilityFiltersEnum } from '../../constants/VisibilityFiltersEnum';
 import './task-list.scss';
 
-const TaskList = ({ todosList, visibilityFilter }) => {
+const TaskList = () => {
+    const todosList = useSelector((state) => state.todoReducer);
+    const visibilityFilter = useSelector((state) => state.visibilityReducer);
 
     const returnFilteredTodosList = () => {
         switch (visibilityFilter) {
@@ -34,12 +36,4 @@ const TaskList = ({ todosList, visibilityFilter }) => {
     )
 }
 
-const mapStateToProps = (state) => {
-    return ({
-        todosList: state.todoReducer,
-        visibilityFilter: state.visibilityReducer
-    })
-
-}
-
-export default connect(mapStateToProps)(TaskList);
+export default TaskList;
